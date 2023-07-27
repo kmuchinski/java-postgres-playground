@@ -4,6 +4,30 @@ public class Cliente {
     private double renda;
     private char sexo;
     private int anoNascimento;
+    private boolean especial;
+
+    public Cliente(){
+        System.out.println("Criando um Cliente sem parâmetro...");
+        double aleatorio = Math.random();
+        if(aleatorio > 0.5)
+            this.especial = true;
+    }
+
+    public Cliente(double renda, char sexo){
+        this();//Por padrão quando tem mais de um método é recomentado que um chame o outra para faciliar a manutenção. 
+        //Deve ficar na primeira linha.
+        System.out.println("Criando um Cliente com parâmentro...");
+        this.setRenda(renda);
+        this.sexo = sexo;
+    }
+
+    public boolean isEspecial() {
+        return especial;
+    }
+
+    public void setEspecial(boolean especial) {
+        this.especial = especial;
+    }
 
     public void setRenda(double renda) {
         if(renda >= 0)
