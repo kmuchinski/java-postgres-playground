@@ -2,15 +2,26 @@ package com.example;
 
 import java.util.Scanner;
 
-public class AppClasses {
+public class AppScanner {
     public static void main(String[] args) {
         System.out.println("Criando classes");
+        Scanner scanner = new Scanner(System.in);
 
-        Cliente cliente = new Cliente(12321.92, 'M');
+        Cliente cliente = new Cliente();
 
-        cliente.setAnoNascimento(1991);
-        cliente.setNome("Kleisson Muchinski");
-        cliente.setCpf("072.667.219-03");
+        System.out.println("Informe um nome: ");
+        cliente.setNome(scanner.nextLine());
+        System.out.println("Informe o Ano de Nascimento: ");
+        cliente.setAnoNascimento(scanner.nextInt());
+        scanner.nextLine();
+        System.out.println("Informe o CPF: ");
+        cliente.setCpf(scanner.nextLine());
+        System.out.println("Informe a renda: ");
+        cliente.setRenda(scanner.nextDouble());
+        scanner.nextLine();
+        System.out.println("Informe o sexo: ");
+        String sexo = scanner.nextLine();
+        cliente.setSexo(sexo.charAt(0));
 
         System.out.println("Renda: " + cliente.getRenda());
         System.out.println("Sexo; " + cliente.getSexo());
@@ -26,9 +37,5 @@ public class AppClasses {
             System.out.println("CPF é diferente....");
         }
 
-        String[] vetorNome = cliente.getNome().split(" ");
-        System.out.println("Nome: " + vetorNome[0]);
-        System.out.println("Sobrenome: " + vetorNome[1]);
-        System.out.println("Primeira letra: " + cliente.getNome().charAt(0));
     }
 }
