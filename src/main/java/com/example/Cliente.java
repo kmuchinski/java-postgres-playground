@@ -1,6 +1,8 @@
 package com.example;
 
 public class Cliente {
+    private String nome;
+    private String cpf;
     private double renda;
     private char sexo;
     private int anoNascimento;
@@ -19,6 +21,25 @@ public class Cliente {
         System.out.println("Criando um Cliente com parâmentro...");
         this.setRenda(renda);
         this.sexo = sexo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        if(nome.isBlank())
+            System.out.println("Campo nome está em branco ou nulo...");
+        else
+            this.nome = nome.toUpperCase().trim();
+    }
+
+    public String getCpf(){
+        return this.cpf;
+    }
+
+    public void setCpf(String cpf){
+        this.cpf = cpf;
     }
 
     public boolean isEspecial() {
