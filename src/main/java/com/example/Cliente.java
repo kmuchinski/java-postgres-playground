@@ -82,4 +82,8 @@ public class Cliente {
     public int getAnoNascimento(){
         return this.anoNascimento;
     }
+
+    public String toString(){
+        return "Cliente: " + nome + " CPF: " + cpf;
+    }
 }
