@@ -36,7 +36,12 @@ public class YExercicios {
                     }
                     break;
                 case 3:
-                    System.out.println("Escolhido a opção 3.");
+                    System.out.println("Informe o n-éssimo número: ");
+                    nessimoNumero = scanner.nextInt();
+                    Fibonacci fibonacciRecursivo = new Fibonacci(nessimoNumero);
+                    for (int y = 0; y < nessimoNumero; y++) {
+                        System.out.println(fibonacciRecursivo.calcularFibonacciRecursivo(y));
+                    }
                     break;
             }
         } while (opcao != 0);

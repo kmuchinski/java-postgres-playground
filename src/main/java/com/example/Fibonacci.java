@@ -34,7 +34,10 @@ public class Fibonacci {
         return valores;
     }
 
-    public void calcularFibonacciRecursivo(){
-        
+    public int calcularFibonacciRecursivo(int num){
+        if (num < 2){
+            return 1;
+        }
+        return calcularFibonacciRecursivo(num - 1) + calcularFibonacciRecursivo(num - 2);
     }
 }
