@@ -25,10 +25,11 @@ public class AppBd {
    private void localizarEstado(Connection conn, String uf) {
         try{
             //var sql = "select * from  estado where uf = '" + uf + "'";//Suscetível a SQL Injection
-            var sql = "select * from  estado where uf = ?";
+            var sql = "select * from estado where uf = ?";
             var statement = conn.prepareStatement(sql);
-            var result = statement.executeQuery();
+            System.out.println(sql);
             statement.setString(1, uf);
+            var result = statement.executeQuery();
             if(result.next()){
                 System.out.printf("Id: %d Nome: %s UF: %s\n", result.getInt("id"), result.getString("nome"), result.getString("uf"));
             }
