@@ -56,11 +56,11 @@ public class AppBd {
         return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
     }
 
-    private void carregarDriverJDBC() {
+   /*  private void carregarDriverJDBC() {
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
             System.err.println("Não foi possível carregar a biblioteca para acesso ao Banco de Dados." + e.getMessage());
         }
-    }
+    }*/
 }
