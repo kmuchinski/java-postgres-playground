@@ -17,12 +17,38 @@ public class AppBd {
         try(var conn = getConnection()){
             listarEstados(conn);
             localizarEstado(conn, "PR");
+            listarDadosTabela(conn, "cliente");
         } catch (SQLException e) {
                 System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());
         }
     }
 
-   private void localizarEstado(Connection conn, String uf) {
+   private void listarDadosTabela(Connection conn, String tabela) {
+        var sql = "select * from " + tabela;
+        try {
+            var statement = conn.createStatement();
+            var result = statement.executeQuery(sql);
+            
+            var metadata= result.getMetaData();
+            int cols = metadata.getColumnCount();
+
+            for (int i = 1; i <= cols; i++) {
+                System.out.printf("%-25s | ", metadata.getColumnName(i));
+            }
+            System.out.println();
+
+            while(result.next()){
+                for (int i = 1; i <= cols; i++) {
+                    System.out.printf("%-25s | ", result.getString(i));
+                }
+                System.out.println();
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro na execução da cosulta." + e.getMessage());
+        }
+    }
+
+private void localizarEstado(Connection conn, String uf) {
         try{
             //var sql = "select * from  estado where uf = '" + uf + "'";//Suscetível a SQL Injection
             var sql = "select * from estado where uf = ?";
