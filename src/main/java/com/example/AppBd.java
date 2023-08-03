@@ -38,7 +38,7 @@ public class AppBd {
             produtoDAO.excluir(203L);
 
             var dao = new DAO(conn);
-            dao.listar("produto");
+            //dao.listar("produto");
 
         } catch (SQLException e) {
                 System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());

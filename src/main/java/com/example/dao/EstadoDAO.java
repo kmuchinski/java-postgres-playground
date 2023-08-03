@@ -7,11 +7,9 @@ import java.util.List;
 
 import com.example.model.Estado;
 
-public class EstadoDAO {
-    private Connection conn;
-
+public class EstadoDAO extends DAO{
     public EstadoDAO(Connection conn) {
-        this.conn = conn;
+        super(conn);
     }
 
     public List<Estado> listar() throws SQLException {
@@ -23,6 +21,7 @@ public class EstadoDAO {
             estado.setId(result.getLong("id"));
             estado.setNome(result.getString("nome"));
             estado.setUf(result.getString("uf"));
+            lista.add(estado);
         }           
 
         return lista;
