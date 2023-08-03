@@ -17,7 +17,10 @@ public class AppBd {
     public AppBd(){
         try(var conn = ConnectionManager.getConnection()){
             var estadoDAO = new EstadoDAO(conn);
-            estadoDAO.listar();
+            var listaEstado = estadoDAO.listar();
+            for (var estado : listaEstado) {
+                System.out.println(estado);
+            }
             estadoDAO.localizar("PR");
             
             var marca = new Marca();
