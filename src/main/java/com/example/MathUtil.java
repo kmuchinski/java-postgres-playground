@@ -8,10 +8,10 @@ public class MathUtil {
         b = Math.min(a, b);
         a = maior;
         if (b > 0 && a % b == 0)
-            return b;
+                return b;
         if (b == 0)
             return Math.abs(a);
-        //return -1;
-        throw new UnsupportedOperationException("Não é possível calcular o MDC com os valores informados.");
+
+        return mdc(a-b, b);
     }
 }
