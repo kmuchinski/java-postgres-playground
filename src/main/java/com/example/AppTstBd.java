@@ -13,13 +13,13 @@ public class AppTstBd {
         try {
             Class.forName("org.postgresql.Driver");
             try(var conn = DriverManager.getConnection("jdbc:postgresql://localhost/postgres", "gitpod", "")){
-                var stm = conn.createStatement();
-                var result = stm.executeQuery("select * from estado");
-                while(result.next()){
-                    System.out.println(result.getString("nome"));
-                }
+                var cpf = "07266721961";
+                var sql = "insert into funcionario (nome, cpf, loja_id, data_nascimento) values ('Kleisson x. Muchinski', ?, 6, '1991-09-19')";
+                var statement = conn.prepareStatement(sql);
+                statement.setString(1, cpf);
+                statement.executeQuery();
             } catch (Exception e) {
-                System.out.println("Erro......");
+                System.out.println("Erro......" + e.getMessage());
             }
            
         } catch (ClassNotFoundException e) {
