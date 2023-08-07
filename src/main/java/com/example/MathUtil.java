@@ -14,4 +14,17 @@ public class MathUtil {
 
         return mdc(a-b, b);
     }
+
+    static int mdc(int ...valores){
+        if (valores == null)
+            throw new NullPointerException("É necessário passar um valor diferente de Nulo.");
+        if (valores.length == 0)
+            throw new IllegalArgumentException("É necessário ao menos um valor para calcular o MDC.");
+        int a = valores[0];
+        for (int b : valores) {
+            a = mdc(a, b);
+        }
+        
+        return a;
+    }
 }

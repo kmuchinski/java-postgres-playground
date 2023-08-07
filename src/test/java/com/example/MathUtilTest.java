@@ -1,8 +1,9 @@
 package com.example;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import static com.example.MathUtil.mdc;
 
 public class MathUtilTest {
     @Test
@@ -110,5 +111,46 @@ public class MathUtilTest {
         int obtido = MathUtil.mdc(a, b);
 
         assertEquals(esperado, obtido);
+    }
+
+    @Test
+    void testMdcP4 () {
+        int m =2, a = 6, b = 3;
+        int esperado = 6;
+        int obtido = m * MathUtil.mdc(a, b);
+
+        assertEquals(MathUtil.mdc(m*a, m*b), obtido);
+        assertEquals(esperado, obtido);
+    }
+
+    @Test
+    void testMdcP9() {
+        int a = 6, b = 3, c = 2;
+        int esperado = 3;
+        int obtido = mdc(a, b);
+
+        assertTrue(mdc(a, mdc(b, c)) == mdc(mdc(a, b), c) && mdc(mdc(a,b), c) == mdc(a, b, c));
+    }
+
+    @Test
+    void testMdc3Valores() {
+        int a = 12, b = 6, c = 4;
+        int esperado = 2;
+        int obtido = MathUtil.mdc(a, b, c);
+
+        assertEquals(esperado, obtido);
+    }
+
+    @Test
+    void testMdcNenhumValor() {
+        var exception = assertThrows(IllegalArgumentException.class, MathUtil::mdc);
+        System.out.println(exception.getMessage());
+    }
+
+    @Test
+    void testMdcNull() {
+        var exception = assertThrows(NullPointerException.class, () -> mdc(null));
+        var msgEsperado = "É necessário passar um valor diferente de Nulo.";
+        assertEquals(msgEsperado, exception.getMessage());
     }
 }
