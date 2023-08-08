@@ -25,10 +25,10 @@ public class XAppBd {
             }
             funcionarioDAO.localizar(40L);
             var func = new XFuncionario();
-            func.setId(57L);
+            func.setId(59L);
             func.setNome("Kreyson Muka");
             func.setCpf("07166822022");
-            func.setIdLoja(20);
+            func.setIdLoja(12);
             String dataString = "1990-08-22";
             // Convertendo String para Date
             Date dataNascimento = Date.valueOf(dataString);

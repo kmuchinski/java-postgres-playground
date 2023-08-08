@@ -46,7 +46,7 @@ public class XFuncionarioDAO extends XDAO {
         try(var statement = conn.prepareStatement(sql)) {
             statement.setString(1, func.getNome());
             statement.setString(2, func.getCpf());
-            statement.setInt(3, func.getIdLoja());
+            statement.setLong(3, func.getIdLoja());
             statement.setDate(4, func.getDataNascimento());
             if (statement.executeUpdate() == 1)
                 System.out.println("Funcionário inserido com Sucesso!");
@@ -69,7 +69,7 @@ public class XFuncionarioDAO extends XDAO {
     public void alterarLoja(XFuncionario func){
         var sql = "update funcionario set loja_id = ? where id = ?";
         try (var statement = conn.prepareStatement(sql)) {
-            statement.setInt(1, func.getIdLoja());
+            statement.setLong(1, func.getIdLoja());
             statement.setLong(2, func.getId());
             if (statement.executeUpdate() == 1)
                 System.out.println("Alterado a Loja do Funcionário com sucesso!");
