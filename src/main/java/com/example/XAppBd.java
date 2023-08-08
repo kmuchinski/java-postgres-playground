@@ -21,6 +21,11 @@ public class XAppBd {
                 System.out.println(func);
             }
             funcionarioDAO.localizar(40L);
+            var func = new XFuncionario();
+            func.setNome("Kmuchinski Mucha");
+            func.setCpf("07166822015");
+            func.setIdLoja(6);
+            func.setDataNascimento("1990-06-06");
         } catch (SQLException e){
             System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());
         }
