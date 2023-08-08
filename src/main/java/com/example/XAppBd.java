@@ -1,6 +1,9 @@
 package com.example;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import com.example.dao.XConnectionManager;
 import com.example.dao.XDAO;
@@ -22,10 +25,18 @@ public class XAppBd {
             }
             funcionarioDAO.localizar(40L);
             var func = new XFuncionario();
-            func.setNome("Kmuchinski Mucha");
-            func.setCpf("07166822015");
-            func.setIdLoja(6);
-            func.setDataNascimento("1990-06-06");
+            func.setId(57L);
+            func.setNome("Kreyson Muka");
+            func.setCpf("07166822022");
+            func.setIdLoja(20);
+            String dataString = "1990-08-22";
+            // Convertendo String para Date
+            Date dataNascimento = Date.valueOf(dataString);
+            func.setDataNascimento(dataNascimento);
+            System.out.println();
+            //funcionarioDAO.inserir(func);
+            //funcionarioDAO.excluir(58);
+            funcionarioDAO.alterarLoja(func);
         } catch (SQLException e){
             System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());
         }
