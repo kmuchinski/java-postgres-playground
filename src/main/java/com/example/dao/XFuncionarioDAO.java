@@ -27,4 +27,17 @@ public class XFuncionarioDAO extends XDAO {
         }
         return lista;
     }
+
+    public void localizar(Long cod){
+        try{
+            var sql = "select * from funcionario where id = ?";
+            var statement = conn.prepareStatement(sql);
+            statement.setLong(1, cod);
+            var result = statement.executeQuery();
+            if (result.next())
+                System.out.printf("id: %d - nome: %s", result.getLong("id"), result.getString("nome"));
+        } catch (SQLException e){
+            System.err.println("Erro ao executar a consulta: " + e.getMessage());
+        }
+    }
 }

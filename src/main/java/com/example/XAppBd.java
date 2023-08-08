@@ -20,6 +20,7 @@ public class XAppBd {
             for (var func : listaFuncionario) {
                 System.out.println(func);
             }
+            funcionarioDAO.localizar(40L);
         } catch (SQLException e){
             System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());
         }
