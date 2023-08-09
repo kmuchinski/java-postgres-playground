@@ -2,12 +2,11 @@ package com.example;
 
 import java.sql.Date;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 import com.example.dao.XConnectionManager;
-import com.example.dao.XDAO;
 import com.example.dao.XFuncionarioDAO;
+import com.example.dao.XClienteDAO;
+import com.example.model.XCliente;
 import com.example.model.XFuncionario;
 
 
@@ -37,6 +36,27 @@ public class XAppBd {
             //funcionarioDAO.inserir(func);
             //funcionarioDAO.excluir(58);
             funcionarioDAO.alterarLoja(func);
+            System.out.println("************ CLIENTES **************");
+            var clienteDAO = new XClienteDAO(conn);
+            var listaCliente = clienteDAO.listar();
+            for (var client: listaCliente){
+                System.out.println(client);
+            }
+            System.out.println();
+            clienteDAO.localizar(101L);
+            System.out.println();
+            var client = new XCliente();
+            client.setId(101L);
+            client.setNome("Kleisson Muchcccccccccxx");
+            client.setCpf("07155722004");
+            client.setIdCidade(3060);
+            String dataString2 = "1991-10-19";
+            Date dataNascimento2 = Date.valueOf(dataString2);
+            client.setDataNascimento(dataNascimento2);
+            //clienteDAO.inserir(client);
+            //clienteDAO.alterarNome(client);
+            System.out.println();
+            //clienteDAO.excluir(101L);
         } catch (SQLException e){
             System.err.println("Não foi possível conectar ao banco de dados: " + e.getMessage());
         }
